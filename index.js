@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 app.get('/proxyNewsApi', (req, res) => {
   const { country = 'in', category = 'general', page = 1, pageSize = 5 } = req.query;
-  const apiKey = 'YOUR_API_KEY'; // Replace with your News API key
+  const apiKey = process.env.REACT_APP_NEWS_API; // Replace with your News API key
 
   const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
 
