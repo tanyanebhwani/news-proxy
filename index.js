@@ -18,7 +18,10 @@ app.get('/proxyNewsApi', (req, res) => {
 
   axios.get(url)
     .then(response => res.json(response.data))
-    .catch(error => res.status(500).send(error.message));
+    .catch(error => {
+      console.error("Error fetching data:", error);  // Log the full error
+      res.status(500).send(error.message);
+    });
 });
 
 const port = process.env.PORT || 3000;
