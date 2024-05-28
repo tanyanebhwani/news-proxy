@@ -12,10 +12,8 @@ app.get('/', (req, res) => {
 
 app.get('/proxyNewsApi', (req, res) => {
   const { country = 'in', category = 'general', page = 1, pageSize = 5 } = req.query;
-  const apiKey = REACT_APP_NEWS_API; // Replace with your News API key
-
+   const apiKey = process.env.NEWS_API_KEY;
   const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
-
   axios.get(url)
     .then(response => res.json(response.data))
     .catch(error => {
