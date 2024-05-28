@@ -5,6 +5,11 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
+// Default route for root URL
+app.get('/', (req, res) => {
+  res.send('News Proxy Server is running');
+});
+
 app.get('/proxyNewsApi', (req, res) => {
   const { country = 'in', category = 'general', page = 1, pageSize = 5 } = req.query;
   const apiKey = 'YOUR_API_KEY'; // Replace with your News API key
@@ -20,3 +25,4 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
