@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send('News Proxy Server is running');
 });
 
-app.get('/proxyNewsApi', (req, res) => {
+app.get('/proxyNewsApi/country/:country/category/:category/page/:page/pageSize/:pageSize', (req, res) => {
   const { country , category , page , pageSize } = req.params;
   const apiKey = process.env.NEWS_API_KEY;
   const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
